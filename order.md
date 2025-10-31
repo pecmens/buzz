@@ -5,7 +5,7 @@
 
 ## 当前项目进度
 
-### 初始阶段（2025-10-31）
+### 初始阶段（2024-10-25）
 - ✅ 创建项目规划文档（project.md）
 - ✅ 创建进度管理文档（order.md）
 - ✅ 确认拥有GitHub、Vercel和Supabase账户
@@ -14,8 +14,11 @@
 - ✅ 实现响应式布局和首页设计
 - ✅ 配置Supabase客户端连接
 - ✅ 完成GitHub仓库创建和代码推送
-- 📝 进行中：Supabase数据库表结构创建
+- ✅ 完成Supabase数据库表结构创建和RLS配置
+- ✅ 创建supabase-init.sql初始化脚本
+- ✅ 创建详细的README.md文档
 - ✅ 创建REC.md开发记录文档
+- ✅ 清空已解决的错误记录（temp/error.md）
 
 ## Git版本提交记录
 
@@ -26,15 +29,14 @@ git commit -m "feat: [功能模块] 简要描述修改内容"
 git push origin main
 ```
 
-### 提交记录示例
+### 实际提交记录
 | 日期 | 版本号 | 提交信息 | 修改内容 |
 |------|--------|----------|----------|
-| 2025-10-31 | v0.0.1 | feat: 项目初始化 | 创建project.md和order.md文档 |
-| 2025-10-31 | v0.0.2 | feat: 确认账户准备 | 确认GitHub、Vercel和Supabase账户就绪 |
-| 2025-10-31 | v0.0.3 | feat: 前端项目初始化 | 创建Next.js项目结构，配置依赖和基础UI
-| 2025-10-31 | v0.0.4 | feat: 实现响应式布局 | 创建header、footer和响应式导航
-| 2025-10-31 | v0.0.5 | feat: 首页设计 | 实现英雄区域、文章列表和分类展示
-| 2025-10-31 | v0.0.6 | feat: Supabase集成 | 配置Supabase客户端，实现基础数据获取函数
+| 2024-10-25 | - | feat: 完成Supabase数据库表结构创建和配置 | 创建REC.md、supabase-init.sql，更新order.md，解决RLS警告 |
+| 2024-10-25 | - | docs: 更新开发记录文档 | 更新REC.md文件，添加代码提交记录 |
+| 2024-10-25 | - | docs: 创建详细的README.md文档并更新相关记录 | 创建README.md，更新REC.md和order.md |
+| 2024-10-25 | - | docs: 校准REC.md文件中的时间记录 | 修正REC.md中的时间戳错误，调整为合理时间线 |
+| 2024-10-25 | - | docs: 清空已解决的错误记录 | 清空temp/error.md文件中的RLS警告记录
 
 ## 下一步工作计划
 
@@ -48,9 +50,10 @@ git push origin main
 
 ### 第二阶段任务（进行中）
 1. ✅ 创建GitHub仓库并推送到远程
-2. 📝 在Supabase中创建数据库表结构（详细步骤已添加到下一步操作建议）
+2. ✅ 在Supabase中创建数据库表结构并配置RLS
 3. 📝 实现用户认证功能
 4. 📝 开发文章详情页
+5. 📝 设置Vercel自动部署
 
 ### 今日工作小结
 - 已完成Next.js项目的基础结构搭建
@@ -59,23 +62,41 @@ git push origin main
 - 已配置Supabase客户端和环境变量示例
 - 已完成GitHub仓库创建和代码推送
 - 已创建supabase-init.sql初始化脚本
-- 已更新project.md，记录项目当前状态
-- 已更新order.md，添加Supabase数据库表结构创建的详细步骤和导入方法
-- 已创建REC.md开发记录文档，详细记录每步操作
-- ✅ 已完成Supabase数据库表结构的创建工作
-- ✅ 提交所有代码修改，记录项目进度
-- ✅ 创建详细的README.md文档
+- 已完成Supabase数据库表结构创建和RLS配置
+- 已创建详细的README.md文档
+- 已创建和更新REC.md开发记录文档
+- 已更新project.md和order.md，保持文档同步
+- 已清空已解决的错误记录（temp/error.md）
 
 ### 下一步具体操作建议
 1. ✅ 在GitHub上创建新仓库（命名为buzz）
 2. ✅ 初始化本地Git仓库：`git init`
 3. ✅ 添加远程仓库：`git remote add origin [GitHub仓库URL]`
-4. ✅ 执行提交并推送：`git add .`, `git commit -m "feat: 前端项目初始化"`, `git push -u origin main`
-5. ✅ 在Supabase中创建数据库表结构（已完成）（有两种方法，推荐使用SQL编辑器直接导入脚本）：
+4. ✅ 执行提交并推送
+5. ✅ 在Supabase中创建数据库表结构并配置RLS
 
-6. 实现用户认证功能，包括登录、注册和会话管理
-7. 开发文章详情页，支持Markdown内容展示
-8. 设置Vercel自动部署
+6. 实现用户认证功能：
+   - 创建登录和注册页面
+   - 使用Supabase Auth实现身份验证
+   - 配置会话管理和路由保护
+   - 添加用户资料页面
+
+7. 开发文章详情页：
+   - 创建文章详情路由
+   - 实现Markdown内容渲染
+   - 添加评论功能
+   - 实现相关文章推荐
+
+8. 设置Vercel自动部署：
+   - 连接GitHub仓库到Vercel
+   - 配置环境变量
+   - 测试部署流程
+   - 设置自定义域名（可选）
+
+9. 优化前端代码：
+   - 从模拟数据切换到实际从Supabase获取数据
+   - 实现数据加载状态和错误处理
+   - 优化页面性能
 
 ## 注意事项
 - 每次提交代码前，请更新此文件中的进度和提交记录
