@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { login, loginWithGitHub, loginWithGoogle } from '@/lib/auth';
 import Link from 'next/link';
@@ -17,8 +19,8 @@ export default function LoginPage() {
       await login(email, password);
       // 登录成功后会自动跳转
       window.location.href = '/';
-    } catch (err: any) {
-      setError(err.message || '登录失败，请重试');
+    } catch (err) {
+      setError((err as Error).message || '登录失败，请重试');
     } finally {
       setLoading(false);
     }
@@ -31,8 +33,8 @@ export default function LoginPage() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (err: any) {
-      setError(err.message || 'GitHub登录失败，请重试');
+    } catch (err) {
+      setError((err as Error).message || 'GitHub登录失败，请重试');
     }
   };
 
@@ -43,8 +45,8 @@ export default function LoginPage() {
       if (data.url) {
         window.location.href = data.url;
       }
-    } catch (err: any) {
-      setError(err.message || 'Google登录失败，请重试');
+    } catch (err) {
+      setError((err as Error).message || 'Google登录失败，请重试');
     }
   };
 
@@ -167,3 +169,6 @@ export default function LoginPage() {
     </div>
   );
 }
+
+// 确保页面不被静态生成
+export const dynamic = 'force-dynamic';

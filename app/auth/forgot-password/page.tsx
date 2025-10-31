@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { resetPassword } from '@/lib/auth';
 import Link from 'next/link';
@@ -24,8 +26,8 @@ export default function ForgotPasswordPage() {
       await resetPassword(email);
       setSuccess('密码重置邮件已发送，请检查您的邮箱');
       setEmail('');
-    } catch (err: any) {
-      setError(err.message || '发送密码重置邮件失败，请重试');
+    } catch (err) {
+      setError((err as Error).message || '发送密码重置邮件失败，请重试');
     } finally {
       setLoading(false);
     }
@@ -95,3 +97,6 @@ export default function ForgotPasswordPage() {
     </div>
   );
 }
+
+// 确保页面不被静态生成
+export const dynamic = 'force-dynamic';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { register } from '@/lib/auth';
 import Link from 'next/link';
@@ -42,8 +44,8 @@ export default function RegisterPage() {
       setPassword('');
       setConfirmPassword('');
       setUsername('');
-    } catch (err: any) {
-      setError(err.message || '注册失败，请重试');
+    } catch (err) {
+      setError((err as Error).message || '注册失败，请重试');
     } finally {
       setLoading(false);
     }
@@ -154,17 +156,20 @@ export default function RegisterPage() {
           </div>
 
           <p className="mt-4 text-center text-sm text-gray-600">
-            点击"创建账户"，即表示您同意我们的
-            <Link href="/terms" className="font-medium text-blue-600 hover:text-blue-500 mx-1">
-              服务条款
-            </Link>
-            和
-            <Link href="/privacy" className="font-medium text-blue-600 hover:text-blue-500 mx-1">
-              隐私政策
-            </Link>
-          </p>
+        点击&amp;quot;创建账户&amp;quot;，即表示您同意我们的
+        <Link href="/terms" className="font-medium text-blue-600 hover:text-blue-500 mx-1">
+          服务条款
+        </Link>
+        和
+        <Link href="/privacy" className="font-medium text-blue-600 hover:text-blue-500 mx-1">
+          隐私政策
+        </Link>
+      </p>
         </form>
       </div>
     </div>
   );
 }
+
+// 确保页面不被静态生成
+export const dynamic = 'force-dynamic';
