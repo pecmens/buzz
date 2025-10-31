@@ -64,6 +64,7 @@ git push origin main
 - 已创建REC.md开发记录文档，详细记录每步操作
 - ✅ 已完成Supabase数据库表结构的创建工作
 - ✅ 提交所有代码修改，记录项目进度
+- ✅ 创建详细的README.md文档
 
 ### 下一步具体操作建议
 1. ✅ 在GitHub上创建新仓库（命名为buzz）
