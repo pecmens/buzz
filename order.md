@@ -5,7 +5,7 @@
 
 ## 当前项目进度
 
-### 初始阶段（2024-10-25）
+### 初始阶段（2025-10-31）
 - ✅ 创建项目规划文档（project.md）
 - ✅ 创建进度管理文档（order.md）
 - ✅ 确认拥有GitHub、Vercel和Supabase账户
@@ -32,11 +32,11 @@ git push origin main
 ### 实际提交记录
 | 日期 | 版本号 | 提交信息 | 修改内容 |
 |------|--------|----------|----------|
-| 2024-10-25 | - | feat: 完成Supabase数据库表结构创建和配置 | 创建REC.md、supabase-init.sql，更新order.md，解决RLS警告 |
-| 2024-10-25 | - | docs: 更新开发记录文档 | 更新REC.md文件，添加代码提交记录 |
-| 2024-10-25 | - | docs: 创建详细的README.md文档并更新相关记录 | 创建README.md，更新REC.md和order.md |
-| 2024-10-25 | - | docs: 校准REC.md文件中的时间记录 | 修正REC.md中的时间戳错误，调整为合理时间线 |
-| 2024-10-25 | - | docs: 清空已解决的错误记录 | 清空temp/error.md文件中的RLS警告记录
+| 2025-10-31 | - | feat: 完成Supabase数据库表结构创建和配置 | 创建REC.md、supabase-init.sql，更新order.md，解决RLS警告 |
+| 2025-10-31 | - | docs: 更新开发记录文档 | 更新REC.md文件，添加代码提交记录 |
+| 2025-10-31 | - | docs: 创建详细的README.md文档并更新相关记录 | 创建README.md，更新REC.md和order.md |
+| 2025-10-31 | - | docs: 校准REC.md文件中的时间记录 | 修正REC.md中的时间戳错误，调整为合理时间线 |
+| 2025-10-31 | - | docs: 清空已解决的错误记录 | 清空temp/error.md文件中的RLS警告记录
 
 ## 下一步工作计划
 
