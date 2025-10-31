@@ -25,12 +25,18 @@ export default function RootLayout({
               </svg>
               <span className="text-xl font-bold text-dark">Buzz Blog</span>
             </div>
-            <nav className="hidden md:flex space-x-8">
+            <nav className="hidden md:flex items-center space-x-8">
               <a href="/" className="nav-link active">首页</a>
               <a href="/about" className="nav-link">关于</a>
               <a href="/categories" className="nav-link">分类</a>
               <a href="/tags" className="nav-link">标签</a>
               <a href="/contact" className="nav-link">联系</a>
+              <div className="ml-4 flex items-center space-x-3">
+                <a href="/auth/login" className="text-sm font-medium text-gray-700 hover:text-blue-600">登录</a>
+                <a href="/auth/register" className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                  注册
+                </a>
+              </div>
             </nav>
             <div className="md:hidden">
               <button className="p-2">
