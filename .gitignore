@@ -53,5 +53,3 @@ ehthumbs.db
 *.tsbuildinfo
 next-env.d.ts
 
-# Qwen context file
-QWEN.md
