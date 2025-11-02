@@ -161,7 +161,7 @@ export default function RecentActivity() {
                       {comment.content}
                     </p>
                     <p className="text-sm text-gray-500 mt-1">
-                      {comment.author} 在 "{comment.postTitle}" · {formatDate(comment.created_at)}
+                      {comment.author} 在 &ldquo;{comment.postTitle}&rdquo; · {formatDate(comment.created_at)}
                     </p>
                   </div>
                   <div className="flex-shrink-0">

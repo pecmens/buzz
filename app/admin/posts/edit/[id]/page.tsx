@@ -24,7 +24,7 @@ export default async function EditPostPage({ params }: EditPostPageProps) {
           <div>
             <h1 className="text-2xl font-bold text-gray-900">编辑文章</h1>
             <p className="mt-1 text-sm text-gray-500">
-              编辑文章 "{post.title}"
+              编辑文章 &ldquo;{post.title}&rdquo;
             </p>
           </div>
           

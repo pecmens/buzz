@@ -74,8 +74,7 @@ export async function getRelatedPosts(currentPostId: string, limit: number = 4):
 export async function getPostsList(
   limit: number = 10,
   offset: number = 0,
-  category?: string,
-  tag?: string
+  category?: string
 ): Promise<{ posts: Post[]; count: number }> {
   try {
     let query = supabase

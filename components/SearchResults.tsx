@@ -61,7 +61,7 @@ export default function SearchResults({
         </svg>
         <h3 className="mt-4 text-lg font-medium text-gray-900">没有找到相关文章</h3>
         <p className="mt-2 text-gray-500">
-          没有找到包含 "<span className="font-medium">{query}</span>" 的文章
+          没有找到包含 &ldquo;<span className="font-medium">{query}</span>&rdquo; 的文章
         </p>
         <div className="mt-6">
           <p className="text-sm text-gray-500 mb-4">建议：</p>
@@ -83,7 +83,7 @@ export default function SearchResults({
           找到 <span className="font-medium">{total}</span> 篇相关文章
           {query && (
             <>
-              ，关键词：<span className="font-medium">"{query}"</span>
+              ，关键词：<span className="font-medium">&ldquo;{query}&rdquo;</span>
             </>
           )}
         </p>
