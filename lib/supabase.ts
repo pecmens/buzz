@@ -11,11 +11,32 @@ export async function getPosts() {
   try {
     const { data, error } = await supabase
       .from('posts')
-      .select('*')
+      .select(`
+        id,
+        title,
+        slug,
+        excerpt,
+        cover_image_url,
+        created_at,
+        updated_at,
+        published_at,
+        view_count,
+        status,
+        users(username),
+        categories(name)
+      `)
+      .eq('status', 'published')
       .order('created_at', { ascending: false });
     
     if (error) throw error;
-    return data;
+    
+    // 格式化数据
+    return data.map(post => ({
+      ...post,
+      author: post.users?.username || '匿名',
+      category: post.categories?.name,
+      readTime: '5 分钟' // 临时设置，实际应该根据内容计算
+    }));
   } catch (error) {
     console.error('Error fetching posts:', error);
     return [];
@@ -27,12 +48,34 @@ export async function getPost(slug: string) {
   try {
     const { data, error } = await supabase
       .from('posts')
-      .select('*')
+      .select(`
+        id,
+        title,
+        slug,
+        content,
+        excerpt,
+        cover_image_url,
+        created_at,
+        updated_at,
+        published_at,
+        view_count,
+        status,
+        users(username),
+        categories(name)
+      `)
       .eq('slug', slug)
+      .eq('status', 'published') // 只获取已发布的文章
       .single();
     
     if (error) throw error;
-    return data;
+    
+    // 格式化数据
+    return {
+      ...data,
+      author: data.users?.username || '匿名',
+      category: data.categories?.name,
+      readTime: '5 分钟' // 临时设置，实际应该根据内容计算
+    };
   } catch (error) {
     console.error('Error fetching post:', error);
     return null;
