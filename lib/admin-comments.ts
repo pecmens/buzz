@@ -60,10 +60,10 @@ export async function getAdminComments(
       return { comments: [], total: 0 };
     }
 
-    const comments = data.map(comment => ({
+    const comments = data.map((comment: any) => ({
       ...comment,
-      author_name: comment.users?.username || '匿名用户',
-      post_title: comment.posts?.title || '未知文章'
+      author_name: (comment.users as any)?.username || '匿名用户',
+      post_title: (comment.posts as any)?.title || '未知文章'
     })) as AdminComment[];
 
     return { comments, total: count || 0 };

@@ -25,14 +25,14 @@ export default function TagPosts({
   const totalPages = Math.ceil(total / pageSize);
 
   const handleSortChange = (newSortBy: 'date' | 'views') => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
     params.set('sort', newSortBy);
     params.delete('page'); // 重置页码
     router.push(`/tags/${tagSlug}?${params.toString()}`);
   };
 
   const handlePageChange = (page: number) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
     params.set('page', page.toString());
     router.push(`/tags/${tagSlug}?${params.toString()}`);
   };

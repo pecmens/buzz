@@ -120,12 +120,12 @@ export async function getTagPosts(
       return { posts: [], total: 0 };
     }
 
-    const posts = data.map(item => {
+    const posts = data.map((item: any) => {
       const post = item.posts;
       return {
         ...post,
-        author: post.users?.username || '匿名',
-        category: post.categories?.name || '未分类',
+        author: (post.users as any)?.username || '匿名',
+        category: (post.categories as any)?.name || '未分类',
         readTime: calculateReadTime(post.excerpt || '')
       };
     }) as TagPost[];

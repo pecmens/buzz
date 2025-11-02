@@ -66,10 +66,10 @@ export async function getCommentsByPostId(postId: string): Promise<Comment[]> {
         
         return {
           ...comment,
-          author_name: comment.users?.username || '匿名用户',
-          replies: replies?.map(reply => ({
+          author_name: (comment.users as any)?.username || '匿名用户',
+          replies: replies?.map((reply: any) => ({
             ...reply,
-            author_name: reply.users?.username || '匿名用户'
+            author_name: (reply.users as any)?.username || '匿名用户'
           })) || []
         };
       })

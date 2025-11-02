@@ -66,10 +66,10 @@ export async function getAdminPosts(
       return { posts: [], total: 0 };
     }
 
-    const posts = data.map(post => ({
+    const posts = data.map((post: any) => ({
       ...post,
-      author: post.users?.username || '匿名',
-      category: post.categories?.name || '未分类'
+      author: (post.users as any)?.username || '匿名',
+      category: (post.categories as any)?.name || '未分类'
     })) as AdminPost[];
 
     return { posts, total: count || 0 };
@@ -225,7 +225,7 @@ export async function batchUpdatePostStatus(
   status: 'draft' | 'published' | 'archived'
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const updateData = {
+    const updateData: any = {
       status,
       updated_at: new Date().toISOString(),
     };

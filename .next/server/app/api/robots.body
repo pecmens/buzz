@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# 禁止爬取管理页面
+Disallow: /admin/
+Disallow: /auth/
+
+# 禁止爬取API路由
+Disallow: /api/
+
+# 允许爬取搜索页面
+Allow: /search
+
+# Sitemap
+Sitemap: https://buzz-blog.vercel.app/sitemap.xml
+
+# 爬取延迟
+Crawl-delay: 1

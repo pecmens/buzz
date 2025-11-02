@@ -81,9 +81,9 @@ export async function getRecentPosts(limit: number = 5) {
       return [];
     }
 
-    return data.map(post => ({
+    return data.map((post: any) => ({
       ...post,
-      author: post.users?.username || '匿名'
+      author: (post.users as any)?.username || '匿名'
     }));
   } catch (error) {
     console.error('获取最近文章失败:', error);
@@ -112,10 +112,10 @@ export async function getRecentComments(limit: number = 5) {
       return [];
     }
 
-    return data.map(comment => ({
+    return data.map((comment: any) => ({
       ...comment,
-      author: comment.users?.username || '匿名',
-      postTitle: comment.posts?.title || '未知文章'
+      author: (comment.users as any)?.username || '匿名',
+      postTitle: (comment.posts as any)?.title || '未知文章'
     }));
   } catch (error) {
     console.error('获取最近评论失败:', error);

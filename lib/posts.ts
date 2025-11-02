@@ -60,9 +60,9 @@ export async function getRelatedPosts(currentPostId: string, limit: number = 4):
     }
 
     // 格式化返回的数据
-    return relatedPosts.map(post => ({
+    return relatedPosts.map((post: any) => ({
       ...post,
-      category: post.categories?.name,
+      category: (post.categories as any)?.name,
     })) as Post[];
   } catch (error) {
     console.error('获取相关文章错误:', error);
@@ -111,10 +111,10 @@ export async function getPostsList(
     }
 
     // 格式化返回的数据
-    const posts = data.map(post => ({
+    const posts = data.map((post: any) => ({
       ...post,
-      author: post.users?.username || '匿名',
-      category: post.categories?.name,
+      author: (post.users as any)?.username || '匿名',
+      category: (post.categories as any)?.name,
       readTime: '5 分钟' // 临时设置，实际应该根据内容计算
     })) as Post[];
 

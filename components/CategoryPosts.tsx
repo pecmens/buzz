@@ -25,14 +25,14 @@ export default function CategoryPosts({
   const totalPages = Math.ceil(total / pageSize);
 
   const handleSortChange = (newSortBy: 'date' | 'views') => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
     params.set('sort', newSortBy);
     params.delete('page'); // 重置页码
     router.push(`/categories/${categorySlug}?${params.toString()}`);
   };
 
   const handlePageChange = (page: number) => {
-    const params = new URLSearchParams(searchParams);
+    const params = new URLSearchParams(searchParams.toString());
     params.set('page', page.toString());
     router.push(`/categories/${categorySlug}?${params.toString()}`);
   };

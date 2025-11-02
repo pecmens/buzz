@@ -118,9 +118,9 @@ export async function getCategoryPosts(
       return { posts: [], total: 0 };
     }
 
-    const posts = data.map(post => ({
+    const posts = data.map((post: any) => ({
       ...post,
-      author: post.users?.username || '匿名',
+      author: (post.users as any)?.username || '匿名',
       readTime: calculateReadTime(post.excerpt || '')
     })) as CategoryPost[];
 

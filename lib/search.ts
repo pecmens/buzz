@@ -123,8 +123,8 @@ export async function searchPosts(params: SearchParams): Promise<SearchResult> {
         slug: post.slug,
         excerpt: post.excerpt || '',
         content: post.content,
-        category: post.categories?.name || '未分类',
-        author: post.users?.username || '匿名',
+        category: (post.categories as any)?.name || '未分类',
+        author: (post.users as any)?.username || '匿名',
         created_at: post.created_at,
         view_count: post.view_count || 0,
         highlight: generateHighlight(post, searchTerm)

@@ -73,27 +73,44 @@ NEXT_PUBLIC_SITE_NAME=Buzz Blog
 
 ### 🛠️ 常见问题解决
 
-#### 1. 环境变量问题
+#### 1. Supabase Edge Runtime 警告
+如果在 Vercel 部署时看到以下警告：
+```
+A Node.js API is used (process.versions) which is not supported in the Edge Runtime
+```
+
+**解决方案**：
+- 已在 `next.config.js` 中添加 webpack 配置
+- 已在 `middleware.ts` 中指定使用 Node.js runtime
+- 已更新 Supabase 依赖到最新版本
+
+#### 2. 环境变量问题
 如果遇到 Supabase 连接错误：
 - 检查环境变量是否正确设置
 - 确认 Supabase URL 和密钥有效
 - 重新部署项目
 
-#### 2. 数据库连接问题
+#### 3. 数据库连接问题
 - 确认 Supabase 项目状态正常
 - 检查数据库表是否正确创建
 - 验证 RLS 策略配置
 
-#### 3. 认证问题
+#### 4. 认证问题
 - 检查 Supabase Auth 配置
 - 确认重定向 URL 设置正确
 - 验证用户角色权限
 
-#### 4. 静态生成问题
+#### 5. 静态生成问题
 如果某些页面无法静态生成：
 - 检查 `generateStaticParams` 函数
 - 确认数据获取逻辑正确
 - 查看构建日志错误信息
+
+#### 6. 中间件问题
+如果中间件导致部署失败：
+- 确认 `middleware.ts` 中指定了正确的 runtime
+- 检查匹配器配置是否正确
+- 验证权限检查逻辑
 
 ### 📊 监控和维护
 

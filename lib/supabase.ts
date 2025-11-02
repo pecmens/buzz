@@ -4,7 +4,22 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase environment variables');
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true
+  },
+  realtime: {
+    params: {
+      eventsPerSecond: 10
+    }
+  }
+});
 
 // 示例函数：获取文章列表
 export async function getPosts() {
@@ -31,10 +46,10 @@ export async function getPosts() {
     if (error) throw error;
     
     // 格式化数据
-    return data.map(post => ({
+    return data.map((post: any) => ({
       ...post,
-      author: post.users?.username || '匿名',
-      category: post.categories?.name,
+      author: (post.users as any)?.username || '匿名',
+      category: (post.categories as any)?.name,
       readTime: '5 分钟' // 临时设置，实际应该根据内容计算
     }));
   } catch (error) {
@@ -72,8 +87,8 @@ export async function getPost(slug: string) {
     // 格式化数据
     return {
       ...data,
-      author: data.users?.username || '匿名',
-      category: data.categories?.name,
+      author: (data.users as any)?.username || '匿名',
+      category: (data.categories as any)?.name,
       readTime: '5 分钟' // 临时设置，实际应该根据内容计算
     };
   } catch (error) {
