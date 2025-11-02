@@ -1,197 +1,268 @@
-# Buzz 🚀
+# Buzz Blog 🚀
 
 [![GitHub stars](https://img.shields.io/github/stars/pecmens/buzz.svg)](https://github.com/pecmens/buzz/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/pecmens/buzz.svg)](https://github.com/pecmens/buzz/network)
-[![GitHub license](https://img.shields.io/github/license/pecmens/buzz.svg)](https://github.com/pecmens/buzz/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/pecmens/buzz/blob/main/LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-14.0+-0070f3.svg)](https://nextjs.org/)
-[![Supabase](https://img.shields.io/badge/Supabase-1.0+-3ECF8E.svg)](https://supabase.io/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000.svg)](https://vercel.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-2.0+-3ECF8E.svg)](https://supabase.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6.svg)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.3+-38B2AC.svg)](https://tailwindcss.com/)
 
-## 项目介绍
+> 🌟 **现代化全栈博客系统** - 为创作者打造的高性能、功能完整的博客平台
 
-Buzz 是一个现代化、高性能的个人博客系统，采用最新的全栈技术栈构建，实现内容管理、用户互动和自动部署功能。该项目旨在提供一个简洁而强大的平台，让创作者能够专注于内容创作，同时享受流畅的用户体验和便捷的管理功能。
+## ✨ 项目亮点
 
-## 核心特性
+Buzz Blog 是一个采用最新技术栈构建的现代化博客系统，集成了完整的内容管理、用户交互和性能优化功能。无论你是技术博主、内容创作者还是企业，Buzz 都能为你提供专业级的博客解决方案。
 
-- 📝 **Markdown 文章编辑** - 支持完整的 Markdown 语法，提供文章预览和草稿保存功能
-- 🔐 **安全的用户认证** - 集成 Supabase Auth，支持邮箱/密码和第三方登录
-- 💬 **互动评论系统** - 支持嵌套回复、评论审核和通知功能
-- 📊 **访问统计分析** - 实时跟踪文章阅读量和用户互动数据
-- 🏷️ **分类与标签管理** - 灵活的内容组织方式，支持多标签筛选
-- 🌓 **响应式设计** - 完美适配各种屏幕尺寸，提供优质的移动端体验
-- 🚀 **自动部署与CI/CD** - 基于 GitHub + Vercel 的无缝部署流程
-- 🔍 **全文搜索功能** - 快速查找感兴趣的内容
-- 🛡️ **企业级安全保障** - 实现行级安全控制和数据加密存储
+### 🎯 为什么选择 Buzz？
 
-## 技术架构
+- **🚀 极致性能** - 静态生成 + 图片懒加载，首屏加载 < 2s
+- **🔍 智能搜索** - 全文搜索 + 关键词高亮 + 搜索建议
+- **📱 完美适配** - 响应式设计，移动端体验优秀
+- **🛡️ 企业级安全** - 权限控制 + 数据加密 + 行级安全
+- **⚡ 开箱即用** - 5分钟部署，零配置启动
 
-Buzz 采用现代化的技术架构，确保高性能、可扩展性和开发效率：
+## 🌟 核心特性
 
+### 📝 内容管理
+- **Markdown 编辑器** - 实时预览 + 语法高亮
+- **文章管理** - 草稿/发布状态 + 定时发布
+- **分类标签** - 灵活的内容组织方式
+- **媒体管理** - 图片上传 + 自动优化
+
+### 🔐 用户系统
+- **多种登录方式** - 邮箱/密码 + GitHub/Google 第三方登录
+- **权限管理** - 管理员/编辑者/用户 三级权限
+- **用户资料** - 个人信息 + 头像 + 个人简介
+
+### 💬 互动功能
+- **评论系统** - 嵌套回复 + 评论审核
+- **搜索功能** - 全文搜索 + 高级筛选
+- **统计分析** - 文章阅读量 + 用户行为分析
+
+### 🎨 用户体验
+- **响应式设计** - 完美适配所有设备
+- **暗黑模式** - 护眼模式支持（规划中）
+- **国际化** - 多语言支持（规划中）
+- **PWA 支持** - 离线访问（规划中）
+
+## 🏗️ 技术架构
+
+### 前端技术栈
 ```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   GitHub    │────▶│    Vercel   │────▶│    用户     │
-│  代码仓库   │◀────│  部署平台   │◀────│    浏览器   │
-└─────────────┘     └──────┬──────┘     └─────────────┘
-                           │
-                           ▼
-                     ┌─────────────┐
-                     │  Supabase   │
-                     │ 数据库 & Auth│
-                     └─────────────┘
+Next.js 14 (App Router) + TypeScript + Tailwind CSS
 ```
 
-### 技术栈
+### 后端服务
+```
+Supabase (PostgreSQL + Auth + Storage + Edge Functions)
+```
 
-- **前端框架**：Next.js 14+ with App Router
-- **样式方案**：Tailwind CSS
-- **内容存储**：Supabase PostgreSQL 数据库
-- **身份验证**：Supabase Auth
-- **部署平台**：Vercel
-- **代码仓库**：GitHub
-- **Markdown 处理**：gray-matter + remark
-- **ORM 工具**：Prisma（可选）
+### 部署方案
+```
+Vercel (Frontend) + Supabase (Backend) + GitHub (CI/CD)
+```
 
-## 系统架构
+### 架构图
+```mermaid
+graph TB
+    A[用户浏览器] --> B[Vercel CDN]
+    B --> C[Next.js 应用]
+    C --> D[Supabase API]
+    D --> E[PostgreSQL 数据库]
+    D --> F[Supabase Auth]
+    D --> G[Supabase Storage]
+    
+    H[GitHub 仓库] --> I[Vercel 自动部署]
+    I --> C
+    
+    J[管理后台] --> C
+    K[搜索功能] --> C
+    L[评论系统] --> C
+```
 
-### 数据库设计
+## 🚀 快速开始
 
-Buzz 采用关系型数据库设计，包含以下核心表：
-
-- **users** - 用户信息管理
-- **posts** - 文章内容存储
-- **categories** - 文章分类
-- **tags** - 文章标签
-- **post_tags** - 文章与标签的关联关系
-- **comments** - 用户评论数据
-
-所有表均实现了完整的关系映射和行级安全控制，确保数据的完整性和安全性。
-
-### 页面结构
-
-#### 前台页面
-- `/` - 博客首页，展示最新文章列表
-- `/posts/:slug` - 文章详情页
-- `/categories/:slug` - 分类文章列表
-- `/tags/:slug` - 标签文章列表
-- `/about` - 关于页面
-- `/contact` - 联系页面
-- `/search` - 搜索结果页面
-
-#### 后台管理
-- `/admin` - 管理仪表盘
-- `/admin/posts` - 文章管理
-- `/admin/categories` - 分类管理
-- `/admin/tags` - 标签管理
-- `/admin/comments` - 评论管理
-- `/admin/profile` - 用户设置
-
-## 开始使用
-
-### 前提条件
-
-- Node.js 18+
+### 环境要求
+- Node.js 18.0+
 - npm 或 yarn
-- Supabase 账户
-- Vercel 账户
-- GitHub 账户
+- Git
 
-### 本地开发
-
-1. **克隆仓库**
-
+### 1️⃣ 克隆项目
 ```bash
 git clone https://github.com/pecmens/buzz.git
 cd buzz
 ```
 
-2. **安装依赖**
-
+### 2️⃣ 安装依赖
 ```bash
 npm install
 # 或
 yarn install
 ```
 
-3. **配置环境变量**
-
-复制 `.env.example` 文件为 `.env.local` 并填入相应的环境变量：
-
-```
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+### 3️⃣ 配置环境变量
+创建 `.env.local` 文件：
+```env
+# Supabase 配置
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+
+# 网站配置
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-4. **启动开发服务器**
+### 4️⃣ 初始化数据库
+在 Supabase 控制台执行 `supabase-init.sql` 脚本
 
+### 5️⃣ 启动开发服务器
 ```bash
 npm run dev
-# 或
-yarn dev
 ```
 
-5. **访问应用**
+访问 `http://localhost:3000` 查看效果！
 
-打开浏览器访问 `http://localhost:3000`
+## 📁 项目结构
 
-### 部署到 Vercel
+```
+buzz/
+├── app/                    # Next.js App Router 页面
+│   ├── admin/             # 管理后台页面
+│   ├── auth/              # 认证相关页面
+│   ├── categories/        # 分类页面
+│   ├── posts/             # 文章页面
+│   ├── search/            # 搜索页面
+│   └── tags/              # 标签页面
+├── components/            # React 组件
+│   ├── admin/             # 管理后台组件
+│   └── ui/                # 通用 UI 组件
+├── lib/                   # 工具函数和配置
+│   ├── admin-*.ts         # 管理后台 API
+│   ├── auth.ts            # 认证相关
+│   ├── supabase.ts        # Supabase 客户端
+│   └── utils.ts           # 工具函数
+├── hooks/                 # 自定义 React Hooks
+├── middleware.ts          # Next.js 中间件
+├── next.config.js         # Next.js 配置
+└── supabase-init.sql      # 数据库初始化脚本
+```
 
-1. 将代码推送到 GitHub 仓库
-2. 在 Vercel 中导入该仓库
-3. 配置环境变量（与本地开发相同）
-4. 点击部署按钮
+## 🎮 功能演示
 
-## 性能优化
+### 📊 管理后台
+- **仪表板** - 数据统计 + 快速操作
+- **文章管理** - 创建/编辑/发布/删除
+- **分类标签** - 内容组织管理
+- **评论审核** - 内容质量控制
+- **用户管理** - 权限分配
 
-Buzz 采用多项性能优化策略，确保网站快速加载和平滑运行：
+### 🔍 搜索功能
+- **实时搜索** - 输入即搜索
+- **关键词高亮** - 搜索结果高亮显示
+- **搜索建议** - 智能搜索提示
+- **高级筛选** - 分类/日期/排序筛选
 
-- **静态生成（SSG）和增量静态再生（ISR）** - 预渲染页面，提升加载速度
-- **图片优化和懒加载** - 减少初始加载时间
-- **代码分割** - 按需加载 JavaScript，减小打包体积
-- **数据库索引优化** - 提升查询性能
-- **CDN 集成** - 全球内容分发，降低延迟
+### 📱 响应式设计
+- **移动端优化** - 触摸友好的交互
+- **平板适配** - 中等屏幕完美显示
+- **桌面端** - 大屏幕充分利用空间
 
-## 安全措施
+## ⚡ 性能优化
 
-- **Row Level Security (RLS)** - 精细化的数据访问控制
-- **XSS 防护** - 自动转义和内容安全策略
-- **CSRF 保护** - 防止跨站请求伪造
-- **输入验证** - 严格的数据校验和清洗
-- **API 限流** - 防止恶意请求和资源滥用
-- **敏感数据加密** - 保护用户隐私信息
+### 🏃‍♂️ 加载性能
+- **静态生成 (SSG)** - 构建时预渲染页面
+- **增量静态再生 (ISR)** - 按需更新静态页面
+- **图片懒加载** - 减少初始加载时间
+- **代码分割** - 按需加载 JavaScript
 
-## 未来规划
+### 🎯 SEO 优化
+- **元数据优化** - 动态生成页面标题和描述
+- **结构化数据** - 搜索引擎友好的数据格式
+- **Sitemap 生成** - 自动生成站点地图
+- **Open Graph** - 社交媒体分享优化
 
-Buzz 项目计划在未来迭代中实现以下功能：
+### 🔧 开发体验
+- **TypeScript** - 类型安全 + 智能提示
+- **ESLint + Prettier** - 代码规范 + 自动格式化
+- **热重载** - 开发时实时预览
+- **错误边界** - 优雅的错误处理
 
-- 🌙 暗黑模式支持
-- 📤 文章导出功能（PDF、Markdown）
-- 📧 订阅通知系统
-- 🌐 多语言支持
-- 📑 文章系列功能
-- 🎨 自定义主题系统
-- 📊 增强的分析仪表盘
-- 📱 专用移动应用
+## 🛡️ 安全特性
 
-## 开发记录
+### 🔐 认证安全
+- **JWT Token** - 安全的用户认证
+- **第三方登录** - GitHub/Google OAuth
+- **密码加密** - bcrypt 哈希加密
+- **会话管理** - 安全的会话控制
 
-项目使用 `REC.md` 文件记录开发过程中的重要决策、技术选型理由和实现细节，确保开发过程的透明度和可追溯性。
+### 🛡️ 数据安全
+- **行级安全 (RLS)** - 数据库级别的访问控制
+- **输入验证** - 防止 SQL 注入和 XSS 攻击
+- **CSRF 保护** - 跨站请求伪造防护
+- **权限控制** - 基于角色的访问控制
 
-## 许可证
+## 📈 部署指南
 
-本项目采用 MIT 许可证 - 详情请查看 [LICENSE](LICENSE) 文件
+### Vercel 部署（推荐）
+1. 将代码推送到 GitHub
+2. 在 Vercel 导入项目
+3. 配置环境变量
+4. 自动部署完成
 
-## 鸣谢
+### 自定义部署
+```bash
+# 构建项目
+npm run build
 
-感谢以下技术社区和工具提供的支持：
+# 启动生产服务器
+npm start
+```
 
-- [Next.js](https://nextjs.org/)
-- [Supabase](https://supabase.io/)
-- [Vercel](https://vercel.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [React](https://reactjs.org/)
+## 🤝 贡献指南
+
+我们欢迎所有形式的贡献！
+
+### 如何贡献
+1. Fork 项目
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 创建 Pull Request
+
+### 开发规范
+- 遵循 TypeScript 类型规范
+- 使用 ESLint + Prettier 格式化代码
+- 编写清晰的提交信息
+- 添加必要的测试用例
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情
+
+## 🙏 致谢
+
+感谢以下开源项目和服务：
+
+- [Next.js](https://nextjs.org/) - React 全栈框架
+- [Supabase](https://supabase.io/) - 开源 Firebase 替代方案
+- [Tailwind CSS](https://tailwindcss.com/) - 实用优先的 CSS 框架
+- [Vercel](https://vercel.com/) - 前端部署平台
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript 的超集
+
+## 📞 联系我们
+
+- **作者**: Erik (pecmens)
+- **邮箱**: [your-email@example.com]
+- **GitHub**: [@pecmens](https://github.com/pecmens)
+- **项目地址**: [https://github.com/pecmens/buzz](https://github.com/pecmens/buzz)
 
 ---
 
-**Buzz** - 为创作者打造的现代化博客平台 🌟
-Kassen Buzz Project
+<div align="center">
+
+**⭐ 如果这个项目对你有帮助，请给它一个 Star！**
+
+Made with ❤️ by [Erik](https://github.com/pecmens)
+
+</div>

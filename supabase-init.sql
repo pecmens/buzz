@@ -8,6 +8,7 @@ CREATE TABLE users (
   username VARCHAR(50) UNIQUE,
   avatar_url TEXT,
   bio TEXT,
+  role VARCHAR(20) DEFAULT 'user',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   last_login TIMESTAMP

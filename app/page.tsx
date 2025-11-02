@@ -1,39 +1,10 @@
 import Link from 'next/link';
+import { getPosts } from '@/lib/supabase';
+import LazyImage from '@/components/LazyImage';
 
-export default function HomePage() {
-  // 模拟文章数据，后续将从Supabase获取
-  const posts = [
-    {
-      id: '1',
-      title: 'Next.js 14 新特性详解',
-      excerpt: '探索Next.js 14带来的服务器组件、增量静态再生等新功能，提升你的React应用性能。',
-      author: '作者名称',
-      publishDate: '2025-10-30',
-      readTime: '8 分钟',
-      category: '前端开发',
-      imageUrl: 'https://picsum.photos/id/1/800/450',
-    },
-    {
-      id: '2',
-      title: 'Tailwind CSS 最佳实践',
-      excerpt: '学习如何在项目中高效使用Tailwind CSS，包括自定义配置、性能优化和组件封装。',
-      author: '作者名称',
-      publishDate: '2025-10-28',
-      readTime: '6 分钟',
-      category: 'CSS',
-      imageUrl: 'https://picsum.photos/id/20/800/450',
-    },
-    {
-      id: '3',
-      title: 'Supabase 入门指南',
-      excerpt: '从零开始学习Supabase，包括数据库设计、认证系统和实时功能的实现。',
-      author: '作者名称',
-      publishDate: '2025-10-25',
-      readTime: '10 分钟',
-      category: '后端开发',
-      imageUrl: 'https://picsum.photos/id/30/800/450',
-    },
-  ];
+export default async function HomePage() {
+  // 从Supabase获取文章数据
+  const posts = await getPosts();
 
   return (
     <div className="space-y-12">
@@ -53,10 +24,12 @@ export default function HomePage() {
           {posts.map((post) => (
             <article key={post.id} className="card">
               <div className="relative h-48 mb-4 overflow-hidden rounded-md">
-                <img 
-                  src={post.imageUrl} 
+                <LazyImage
+                  src={post.cover_image_url || 'https://picsum.photos/800/450'} 
                   alt={post.title} 
                   className="w-full h-full object-cover transition-transform hover:scale-105"
+                  width={800}
+                  height={450}
                 />
                 <div className="absolute top-3 left-3">
                   <span className="bg-primary/90 text-white text-xs px-2 py-1 rounded-full">
@@ -65,7 +38,7 @@ export default function HomePage() {
                 </div>
               </div>
               <h3 className="text-xl font-bold mb-2 line-clamp-2 hover:text-primary transition-colors">
-                <Link href={`/posts/${post.id}`}>{post.title}</Link>
+                <Link href={`/posts/${post.slug}`}>{post.title}</Link>
               </h3>
               <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
               <div className="flex items-center justify-between text-sm text-gray-500">
@@ -75,7 +48,7 @@ export default function HomePage() {
                   </svg>
                   <span>{post.readTime}</span>
                 </div>
-                <span>{post.publishDate}</span>
+                <span>{new Date(post.created_at).toLocaleDateString('zh-CN')}</span>
               </div>
             </article>
           ))}

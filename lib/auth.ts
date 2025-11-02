@@ -197,6 +197,7 @@ async function createUserProfile(userId: string, email: string, username?: strin
       id: userId,
       email,
       username: username || email.split('@')[0],
+      role: 'user', // 默认角色为普通用户
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
       last_login: new Date().toISOString(),

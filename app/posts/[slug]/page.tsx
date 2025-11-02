@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPost } from '@/lib/supabase';
+import { getPost, supabase } from '@/lib/supabase';
 import { markdownToHtml } from '@/lib/markdown';
 import { getCommentsByPostId, Comment } from '@/lib/comments';
 import { getRelatedPosts, Post } from '@/lib/posts';
@@ -27,6 +27,24 @@ interface PostData {
   readTime?: string;
 }
 
+// 生成静态路径
+export async function generateStaticParams() {
+  try {
+    const { data: posts } = await supabase
+      .from('posts')
+      .select('slug')
+      .eq('status', 'published')
+      .limit(100); // 限制数量以避免构建时间过长
+
+    return posts?.map((post) => ({
+      slug: post.slug,
+    })) || [];
+  } catch (error) {
+    console.error('生成静态路径失败:', error);
+    return [];
+  }
+}
+
 export default async function PostPage({ params }: PostPageProps) {
   const post: PostData | null = await getPost(params.slug);
   
@@ -42,7 +60,37 @@ export default async function PostPage({ params }: PostPageProps) {
   const relatedPosts: Post[] = await getRelatedPosts(post.id);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <>
+      {/* 结构化数据 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt || post.content.substring(0, 160),
+            image: post.cover_image_url,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://buzz-blog.vercel.app'}/posts/${post.slug}`,
+            datePublished: post.published_at || post.created_at,
+            dateModified: post.updated_at,
+            author: {
+              '@type': 'Person',
+              name: post.author,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Buzz Blog',
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `${process.env.NEXT_PUBLIC_SITE_URL || 'https://buzz-blog.vercel.app'}/posts/${post.slug}`,
+            },
+          }),
+        }}
+      />
+      
+      <div className="max-w-4xl mx-auto px-4 py-8">
       <article className="prose prose-lg dark:prose-invert mx-auto">
         <header className="mb-8">
           <h1 className="text-4xl font-bold text-dark mb-4">{post.title}</h1>
@@ -185,5 +233,45 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
       </section>
     </div>
+    </>
   );
+}
+
+// 生成页面元数据
+export async function generateMetadata({ params }: PostPageProps) {
+  const post = await getPost(params.slug);
+  
+  if (!post) {
+    return {
+      title: '文章不存在',
+    };
+  }
+
+  return {
+    title: `${post.title} | Buzz Blog`,
+    description: post.excerpt || post.content.substring(0, 160),
+    keywords: [post.category, '博客', '技术文章'].filter(Boolean),
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || post.content.substring(0, 160),
+      type: 'article',
+      publishedTime: post.published_at || post.created_at,
+      modifiedTime: post.updated_at,
+      authors: [post.author || 'Buzz Blog'],
+      images: post.cover_image_url ? [
+        {
+          url: post.cover_image_url,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        }
+      ] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt || post.content.substring(0, 160),
+      images: post.cover_image_url ? [post.cover_image_url] : undefined,
+    },
+  };
 }

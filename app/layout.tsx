@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import BackToTop from '@/components/BackToTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,6 +32,31 @@ export default function RootLayout({
               <a href="/categories" className="nav-link">分类</a>
               <a href="/tags" className="nav-link">标签</a>
               <a href="/contact" className="nav-link">联系</a>
+              
+              {/* 搜索框 */}
+              <div className="ml-4">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="搜索文章..."
+                    className="w-64 px-3 py-1.5 pl-8 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') {
+                        const query = (e.target as HTMLInputElement).value.trim();
+                        if (query) {
+                          window.location.href = `/search?q=${encodeURIComponent(query)}`;
+                        }
+                      }
+                    }}
+                  />
+                  <div className="absolute inset-y-0 left-0 flex items-center pl-2">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              
               <div className="ml-4 flex items-center space-x-3">
                 <a href="/auth/login" className="text-sm font-medium text-gray-700 hover:text-blue-600">登录</a>
                 <a href="/auth/register" className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
@@ -78,6 +104,9 @@ export default function RootLayout({
             </div>
           </div>
         </footer>
+        
+        {/* 回到顶部按钮 */}
+        <BackToTop />
       </body>
     </html>
   );
