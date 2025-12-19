@@ -1,0 +1,290 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="AstroFlow - 现代商业企业型网站" 
+  description="基于Astro框架开发的现代化商业企业网站，提供专业的产品和服务" 
+  keywords="AstroFlow,商业网站,企业网站,现代化设计"
+>
+  <!-- 英雄区 -->
+  <section class="bg-gradient-to-br from-primary/5 to-blue-100 py-20 px-4">
+    <div class="container mx-auto max-w-4xl text-center">
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+        打造现代化<span class="text-primary">商业网站</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 mb-10 max-w-3xl mx-auto">
+        基于Astro框架开发的高性能、响应式商业企业网站，助力您的业务增长
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/contact" class="btn-primary text-center">
+          立即咨询
+        </a>
+        <a href="/about" class="btn-secondary text-center">
+          了解更多
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 特性展示区 -->
+  <section class="section bg-white">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">核心特性</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">
+          我们的网站采用最新的技术和最佳实践，为您提供卓越的用户体验
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 特性卡片 1 -->
+        <div class="card text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-primary text-2xl font-bold">⚡</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">高性能</h3>
+          <p class="text-gray-700">
+            采用Astro框架的静态站点生成和服务器端渲染技术，确保页面加载速度快
+          </p>
+        </div>
+
+        <!-- 特性卡片 2 -->
+        <div class="card text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-primary text-2xl font-bold">📱</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">响应式设计</h3>
+          <p class="text-gray-700">
+            适配各种设备尺寸，从手机到桌面，提供一致的用户体验
+          </p>
+        </div>
+
+        <!-- 特性卡片 3 -->
+        <div class="card text-center">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="text-primary text-2xl font-bold">🎨</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3">现代化设计</h3>
+          <p class="text-gray-700">
+            采用最新的UI设计趋势，简洁、现代、专业的视觉效果
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品/服务展示区 -->
+  <section class="section bg-gray-50">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">我们的产品</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">
+          提供一系列高质量的产品和服务，满足您的业务需求
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 产品卡片 1 -->
+        <div class="card">
+          <div class="h-48 bg-gradient-to-r from-blue-500 to-primary rounded-lg mb-6 overflow-hidden">
+            <div class="w-full h-full flex items-center justify-center">
+              <span class="text-white text-4xl">🏢</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">企业网站建设</h3>
+          <p class="text-gray-700 mb-4">
+            为企业打造专业、现代的网站，提升品牌形象和在线影响力
+          </p>
+          <a href="/products/website-building" class="text-primary font-medium hover:underline">
+            了解详情 →
+          </a>
+        </div>
+
+        <!-- 产品卡片 2 -->
+        <div class="card">
+          <div class="h-48 bg-gradient-to-r from-green-500 to-emerald-600 rounded-lg mb-6 overflow-hidden">
+            <div class="w-full h-full flex items-center justify-center">
+              <span class="text-white text-4xl">📊</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">数据分析服务</h3>
+          <p class="text-gray-700 mb-4">
+            提供专业的数据分析和可视化服务，帮助企业做出明智的决策
+          </p>
+          <a href="/products/data-analysis" class="text-primary font-medium hover:underline">
+            了解详情 →
+          </a>
+        </div>
+
+        <!-- 产品卡片 3 -->
+        <div class="card">
+          <div class="h-48 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg mb-6 overflow-hidden">
+            <div class="w-full h-full flex items-center justify-center">
+              <span class="text-white text-4xl">📱</span>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold mb-3">移动应用开发</h3>
+          <p class="text-gray-700 mb-4">
+            开发高品质的移动应用，为用户提供便捷的移动体验
+          </p>
+          <a href="/products/mobile-app" class="text-primary font-medium hover:underline">
+            了解详情 →
+          </a>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="/products" class="btn-secondary inline-block">
+          查看所有产品
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 客户评价区 -->
+  <section class="section bg-white">
+    <div class="container mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">客户评价</h2>
+        <p class="text-gray-700 max-w-3xl mx-auto">
+          听听我们的客户对我们的产品和服务的评价
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- 评价卡片 1 -->
+        <div class="card">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400">
+              <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-6 italic">
+            "AstroFlow帮助我们打造了一个现代化、高性能的企业网站，大大提升了我们的品牌形象和在线影响力。"
+          </p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+              <span class="text-gray-700 font-medium">张</span>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900">张经理</h4>
+              <p class="text-sm text-gray-500">某科技公司</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 评价卡片 2 -->
+        <div class="card">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400">
+              <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-6 italic">
+            "非常感谢AstroFlow团队的专业服务，他们不仅提供了高质量的网站建设，还为我们提供了完善的售后服务。"
+          </p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+              <span class="text-gray-700 font-medium">李</span>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900">李总监</h4>
+              <p class="text-sm text-gray-500">某金融机构</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 评价卡片 3 -->
+        <div class="card">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400">
+              <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+            </div>
+          </div>
+          <p class="text-gray-700 mb-6 italic">
+            "AstroFlow的产品和服务超出了我们的预期，他们的专业团队为我们提供了定制化的解决方案，帮助我们实现了业务目标。"
+          </p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+              <span class="text-gray-700 font-medium">王</span>
+            </div>
+            <div>
+              <h4 class="font-medium text-gray-900">王总经理</h4>
+              <p class="text-sm text-gray-500">某制造企业</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系区 -->
+  <section class="section bg-primary/5">
+    <div class="container mx-auto max-w-4xl">
+      <div class="bg-white rounded-xl shadow-lg p-8 md:p-12">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            开始您的数字化之旅
+          </h2>
+          <p class="text-gray-700">
+            联系我们，了解如何利用AstroFlow提升您的业务
+          </p>
+        </div>
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                姓名
+              </label>
+              <input 
+                type="text" 
+                id="name" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="请输入您的姓名"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                邮箱
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="请输入您的邮箱"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+              电话
+            </label>
+            <input 
+              type="tel" 
+              id="phone" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="请输入您的电话"
+            />
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">
+              留言
+            </label>
+            <textarea 
+              id="message" 
+              rows="5" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="请输入您的留言内容"
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn-primary inline-block">
+              提交留言
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>

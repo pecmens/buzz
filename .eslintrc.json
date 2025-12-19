@@ -1,16 +1,34 @@
 {
   "extends": [
-    "next/core-web-vitals",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:astro/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "@next/next/no-img-element": "off",
-    "react/no-unescaped-entities": "warn",
-    "@typescript-eslint/no-unused-vars": "warn",
+    // 基本规则
+    "indent": ["error", 2],
+    "quotes": ["error", "'"],
+    "semi": ["error", ";"],
+    "no-trailing-spaces": "error",
+    "eol-last": ["error", "always"],
+    // TypeScript规则
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-explicit-any": "warn",
-    "react-hooks/exhaustive-deps": "warn"
+    "@typescript-eslint/no-unused-vars": "warn"
+  },
+  "settings": {
+    "astro": {
+      "parser": "@typescript-eslint/parser",
+      "extends": "@typescript-eslint/parser"
+    }
   }
 }
