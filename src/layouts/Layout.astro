@@ -1,3 +1,8 @@
+---
+// 导入全局CSS文件
+import '../styles/global.css';
+---
+
 <!doctype html>
 <html lang="zh-CN">
 	<head>
@@ -8,7 +13,9 @@
 		<title>{Astro.props.title || '现代商业企业型网站'}</title>
 		<meta name="description" content={Astro.props.description || '一个基于Astro框架开发的现代商业企业型网站'} />
 		<meta name="keywords" content={Astro.props.keywords || '商业网站,企业网站,Astro'} />
-		<link rel="stylesheet" href="/src/styles/global.css" />
+		<style>
+			@import '../styles/global.css';
+		</style>
 		
 		<!-- Open Graph标签 -->
 		<meta property="og:title" content={Astro.props.title || '现代商业企业型网站'} />
@@ -170,7 +177,9 @@
 				
 				if (isMenuOpen) {
 					// 打开菜单
-					mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
+					if (mobileMenu) {
+						mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
+					}
 					mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible');
 					
 					// 转换为叉号
