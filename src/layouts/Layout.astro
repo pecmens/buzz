@@ -13,9 +13,7 @@ import '../styles/global.css';
 		<title>{Astro.props.title || '现代商业企业型网站'}</title>
 		<meta name="description" content={Astro.props.description || '一个基于Astro框架开发的现代商业企业型网站'} />
 		<meta name="keywords" content={Astro.props.keywords || '商业网站,企业网站,Astro'} />
-		<style>
-			@import '../styles/global.css';
-		</style>
+		<!-- 删除重复的CSS导入，已在顶部script部分导入 -->
 		
 		<!-- Open Graph标签 -->
 		<meta property="og:title" content={Astro.props.title || '现代商业企业型网站'} />
@@ -73,7 +71,7 @@ import '../styles/global.css';
 				
 				<!-- 移动端汉堡菜单 -->
 				<div class="md:hidden">
-					<button id="mobile-menu-button" class="text-gray-700 hover:text-primary focus:outline-none">
+					<button id="mobile-menu-button" class="text-gray-700 hover:text-primary focus:outline-none" aria-label="切换菜单">
 						<!-- 汉堡菜单图标 -->
 						<span class="block w-6 h-0.5 bg-gray-700 mb-1.5 transition-transform duration-300" id="menu-bar-1"></span>
 						<span class="block w-6 h-0.5 bg-gray-700 mb-1.5 transition-opacity duration-300" id="menu-bar-2"></span>
@@ -83,7 +81,7 @@ import '../styles/global.css';
 			</div>
 			
 			<!-- 移动端菜单 -->
-			<nav id="mobile-menu" class="md:hidden bg-white shadow-md absolute w-full left-0 top-full transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out">
+			<nav id="mobile-menu" class="md:hidden bg-white shadow-md absolute w-full left-0 top-full transform -translate-y-full opacity-0 invisible transition-all duration-300 ease-in-out" aria-label="移动端导航">
 				<div class="container mx-auto px-4 py-4">
 					<ul class="space-y-4">
 						<li><a href="/" class="block py-2 text-gray-700 hover:text-primary font-medium">首页</a></li>
@@ -139,18 +137,15 @@ import '../styles/global.css';
 					<div>
 						<h3 class="text-lg font-semibold mb-4">关注我们</h3>
 						<div class="flex space-x-4">
-							<a href="#" class="text-gray-400 hover:text-white">
+							<a href="#" class="text-gray-400 hover:text-white" aria-label="微信">
 								<!-- 社交媒体图标 -->
-								<span class="sr-only">微信</span>
-								<span class="block w-6 h-6 border border-gray-400 rounded-full"></span>
+								<span class="block w-6 h-6 border border-gray-400 rounded-full flex items-center justify-center">💬</span>
 							</a>
-							<a href="#" class="text-gray-400 hover:text-white">
-								<span class="sr-only">微博</span>
-								<span class="block w-6 h-6 border border-gray-400 rounded-full"></span>
+							<a href="#" class="text-gray-400 hover:text-white" aria-label="微博">
+								<span class="block w-6 h-6 border border-gray-400 rounded-full flex items-center justify-center">📱</span>
 							</a>
-							<a href="#" class="text-gray-400 hover:text-white">
-								<span class="sr-only">LinkedIn</span>
-								<span class="block w-6 h-6 border border-gray-400 rounded-full"></span>
+							<a href="#" class="text-gray-400 hover:text-white" aria-label="LinkedIn">
+								<span class="block w-6 h-6 border border-gray-400 rounded-full flex items-center justify-center">💼</span>
 							</a>
 						</div>
 					</div>
@@ -172,43 +167,72 @@ import '../styles/global.css';
 			const menuBar3 = document.getElementById('menu-bar-3');
 			let isMenuOpen = false;
 			
-			mobileMenuButton.addEventListener('click', () => {
-				isMenuOpen = !isMenuOpen;
-				
-				if (isMenuOpen) {
-					// 打开菜单
-					if (mobileMenu) {
-						mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
+			// 添加安全检查函数
+			const isElementExist = (element: any): boolean => {
+				return element !== null && element !== undefined;
+			};
+			
+			if (isElementExist(mobileMenuButton)) {
+				if (mobileMenuButton) {
+					mobileMenuButton.addEventListener('click', () => {
+					isMenuOpen = !isMenuOpen;
+					
+					if (isMenuOpen) {
+						// 打开菜单
+						if (isElementExist(mobileMenu)) {
+							if (mobileMenu) mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
+							if (mobileMenu) mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible');
+						}
+						
+						// 转换为叉号
+                        if (isElementExist(menuBar1) && menuBar1) menuBar1.classList.add('rotate-45', 'translate-y-2');
+						if (isElementExist(menuBar2) && menuBar2) menuBar2.classList.add('opacity-0');
+						if (isElementExist(menuBar3) && menuBar3) menuBar3.classList.add('-rotate-45', '-translate-y-6');
+					} else {
+						// 关闭菜单
+						if (isElementExist(mobileMenu)) {
+						if (mobileMenu) mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
+						if (mobileMenu) mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
+						}
+						
+						// 转换为汉堡
+						if (isElementExist(menuBar1) && menuBar1) menuBar1.classList.remove('rotate-45', 'translate-y-2');
+						if (isElementExist(menuBar2) && menuBar2) menuBar2.classList.remove('opacity-0');
+						if (isElementExist(menuBar3) && menuBar3) menuBar3.classList.remove('-rotate-45', '-translate-y-6');
 					}
-					mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible');
-					
-					// 转换为叉号
-					menuBar1.classList.add('rotate-45', 'translate-y-6');
-					menuBar2.classList.add('opacity-0');
-					menuBar3.classList.add('-rotate-45', '-translate-y-6');
-				} else {
-					// 关闭菜单
-					mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
-					mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
-					
-					// 转换为汉堡
-					menuBar1.classList.remove('rotate-45', 'translate-y-6');
-					menuBar2.classList.remove('opacity-0');
-					menuBar3.classList.remove('-rotate-45', '-translate-y-6');
-				}
-			});
+				});
+			}
 			
 			// 点击页面其他地方关闭菜单
 			document.addEventListener('click', (e) => {
-				if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+				if (isElementExist(mobileMenuButton) && isElementExist(mobileMenu) && 
+					!mobileMenuButton?.contains(e.target as Node) && mobileMenu && !mobileMenu.contains(e.target as Node)) {
 					isMenuOpen = false;
-					mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
-					mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
-					menuBar1.classList.remove('rotate-45', 'translate-y-6');
-					menuBar2.classList.remove('opacity-0');
-					menuBar3.classList.remove('-rotate-45', '-translate-y-6');
+					if (isElementExist(mobileMenu)) {
+						mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
+						mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
+					}
+					if (isElementExist(menuBar1) && menuBar1) menuBar1.classList.remove('rotate-45', 'translate-y-6');
+					if (menuBar2) menuBar2.classList.remove('opacity-0');
+					if (menuBar3) menuBar3.classList.remove('-rotate-45', '-translate-y-6');
 				}
 			});
+			
+			// 添加键盘支持（Esc键关闭菜单）
+		document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && isMenuOpen) {
+					isMenuOpen = false;
+					if (isElementExist(mobileMenu)) {
+						if (mobileMenu) mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
+						if (mobileMenu) mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
+					}
+					if (isElementExist(menuBar1) && menuBar1) menuBar1.classList.remove('rotate-45', 'translate-y-2');
+					if (isElementExist(menuBar2) && menuBar2) menuBar2.classList.remove('opacity-0');
+					if (isElementExist(menuBar3) && menuBar3) menuBar3.classList.remove('-rotate-45', '-translate-y-6');
+					if (isElementExist(mobileMenuButton) && mobileMenuButton) mobileMenuButton.focus();
+				}
+			});
+		}
 		</script>
 	</body>
 </html>
